@@ -141,8 +141,7 @@
 
     <!-- Main Form Container -->
     <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
-        <!-- Formulario configurado con Formspree y multipart/form-data -->
-        <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" class="space-y-6">
+        <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" class="space-y-6">
 
             <!-- Card 1: Datos Personales y Académicos -->
             <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
@@ -264,7 +263,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
                             <input type="radio" name="motivo_principal" value="Incapacidad temporal" required class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Lesión o Movilidad reducida temporal (Fractura, esguince, cirugía)</span>
+                            <span class="ml-3 text-xs font-medium text-gray-700">Lesión o Movilidad reducida temporal</span>
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
                             <input type="radio" name="motivo_principal" value="Discapacidad permanente" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
@@ -272,11 +271,11 @@
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
                             <input type="radio" name="motivo_principal" value="Condicion medica especial" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Condición médica o de salud que limite subir escaleras</span>
+                            <span class="ml-3 text-xs font-medium text-gray-700">Condición médica especial</span>
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
                             <input type="radio" name="motivo_principal" value="Gestacion" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Estado de gestación / Embarazo de alto riesgo</span>
+                            <span class="ml-3 text-xs font-medium text-gray-700">Estado de gestación / Embarazo</span>
                         </label>
                     </div>
                 </div>
@@ -285,7 +284,7 @@
                     <label for="descripcion" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
                         Describe brevemente tu situación de salud o movilidad <span class="text-red-500">*</span>
                     </label>
-                    <textarea id="descripcion" name="descripcion_situacion" rows="3" required placeholder="Por favor detalla tu diagnóstico, tiempo estimado de recuperación o requerimientos específicos..."
+                    <textarea id="descripcion" name="descripcion_situacion" rows="3" required placeholder="Detalla tu diagnóstico o requerimientos..."
                         class="w-full p-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm"></textarea>
                 </div>
 
@@ -301,7 +300,7 @@
                                 </span>
                                 <input type="radio" name="tipo_acceso" value="Temporal" checked onclick="toggleAccesoType('temporal')" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             </div>
-                            <span class="text-xs text-gray-500 mt-1">Por el periodo que indique la incapacidad médica (Días/Meses)</span>
+                            <span class="text-xs text-gray-500 mt-1">Por el periodo que indique la incapacidad</span>
                         </label>
 
                         <label id="label-permanente" class="relative flex flex-col p-4 rounded-xl border-2 border-gray-200 cursor-pointer hover:border-brand-sage">
@@ -311,7 +310,7 @@
                                 </span>
                                 <input type="radio" name="tipo_acceso" value="Permanente" onclick="toggleAccesoType('permanente')" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             </div>
-                            <span class="text-xs text-gray-500 mt-1">Válido durante toda tu permanencia académica regular</span>
+                            <span class="text-xs text-gray-500 mt-1">Durante tu permanencia académica</span>
                         </label>
                     </div>
                 </div>
@@ -325,13 +324,13 @@
                     </div>
                     <div>
                         <h2 class="text-xl font-bold text-brand-slateDark">3. Soporte y Documentación Médica</h2>
-                        <p class="text-xs text-gray-500">Adjunta certificado o informe firmado por profesional de salud</p>
+                        <p class="text-xs text-gray-500">Adjunta certificado o informe médico</p>
                     </div>
                 </div>
 
                 <div class="space-y-3">
                     <label class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium">
-                        Adjunte la documentación médica o justificación médica <span class="text-red-500">*</span>
+                        Adjunte la documentación médica de soporte <span class="text-red-500">*</span>
                     </label>
 
                     <div id="drop-zone" onclick="document.getElementById('file-input').click()"
@@ -339,10 +338,10 @@
                         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-sage mb-3">
                             <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
                         </div>
-                        <p class="text-sm font-semibold text-brand-slateMedium">Haz clic para explorar o arrastra tus archivos aquí</p>
-                        <p class="text-xs text-gray-500 mt-1">Formatos admitidos: PDF, JPG, PNG (Máx. 10MB por archivo)</p>
+                        <p class="text-sm font-semibold text-brand-slateMedium">Haz clic para seleccionar tu archivo de soporte</p>
+                        <p class="text-xs text-gray-500 mt-1">Formatos: PDF, JPG, PNG (Máx. 10MB)</p>
                         
-                        <input type="file" id="file-input" name="soporte_medico" class="hidden" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
+                        <input type="file" id="file-input" name="soporte_medico" required class="hidden" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
                     </div>
 
                     <div id="file-preview" class="hidden bg-gray-50 border border-gray-200 rounded-xl p-3 flex items-center justify-between">
@@ -368,18 +367,18 @@
                     </div>
                     <div>
                         <h2 class="text-xl font-bold text-brand-slateDark">4. Declaración y Firma Digital</h2>
-                        <p class="text-xs text-gray-500">Aceptación de términos y validación legal de la información</p>
+                        <p class="text-xs text-gray-500">Aceptación de términos y validación legal</p>
                     </div>
                 </div>
 
                 <div class="space-y-3 bg-brand-pastelBlue/40 p-4 rounded-xl border border-brand-pastelBlue mb-6 text-xs text-gray-700 leading-relaxed">
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" name="aceptacion_veracidad" value="Aceptado" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
-                        <span>Declaro bajo gravedad de juramento que toda la información aquí proporcionada es <strong>veraz, exacta y completa</strong>.</span>
+                        <span>Declaro bajo gravedad de juramento que toda la información aquí proporcionada es veraz.</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" name="aceptacion_validacion" value="Aceptado" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
-                        <span>Acepto que la institución educativa realice la verificación y validación de la información médica ante las instancias competentes si así lo requiere.</span>
+                        <span>Acepto que la institución verifique la información médica.</span>
                     </label>
                 </div>
 
@@ -396,9 +395,11 @@
                         <div class="border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 overflow-hidden relative">
                             <canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair block"></canvas>
                             <span id="canvasPlaceholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-gray-400 text-xs italic">
-                                Dibuja tu firma con el ratón o el dedo aquí
+                                Dibuja tu firma aquí
                             </span>
                         </div>
+                        <!-- Campo oculto para la firma en texto/base64 -->
+                        <input type="hidden" id="firmaInput" name="firma_digital_base64">
                     </div>
 
                     <div>
@@ -412,7 +413,6 @@
                             <input type="date" id="fecha" name="fecha_envio" readonly
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-gray-600 text-sm font-medium">
                         </div>
-                        <p class="text-[10px] text-gray-400 mt-1">Registrado automáticamente con la fecha de hoy.</p>
                     </div>
                 </div>
             </div>
@@ -438,7 +438,6 @@
                 <div>
                     <p class="font-extrabold text-sm text-brand-slateDark tracking-tight leading-none">UNIMINUTO</p>
                     <p class="text-[10px] text-gray-500 font-medium">Corporación Universitaria Minuto de Dios</p>
-                    <p class="text-[9px] text-brand-sage font-bold">Educación de calidad al alcance de todos</p>
                 </div>
             </div>
 
@@ -454,6 +453,16 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha').value = today;
             initSignatureCanvas();
+
+            // Guardar firma automáticamente antes de enviar
+            document.getElementById('elevatorForm').addEventListener('submit', function(e) {
+                if (hasSigned) {
+                    document.getElementById('firmaInput').value = canvas.toDataURL('image/png');
+                } else {
+                    e.preventDefault();
+                    alert("Por favor realiza tu firma en el recuadro antes de enviar.");
+                }
+            });
         });
 
         function toggleAccesoType(type) {
@@ -469,13 +478,10 @@
             }
         }
 
-        let selectedFile = null;
-
         function handleFileSelect(e) {
-            const files = e.target.files || e.dataTransfer.files;
-            if (files.length > 0) {
-                selectedFile = files[0];
-                renderFilePreview(selectedFile);
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                renderFilePreview(files[0]);
             }
         }
 
@@ -488,7 +494,7 @@
             nameEl.textContent = file.name;
             sizeEl.textContent = (file.size / (1024 * 1024)).toFixed(2) + " MB";
 
-            if (file.name.endsWith('.pdf')) {
+            if (file.name.toLowerCase().endsWith('.pdf')) {
                 iconEl.className = "fa-solid fa-file-pdf text-red-500 text-2xl";
             } else {
                 iconEl.className = "fa-solid fa-file-image text-brand-sage text-2xl";
@@ -498,27 +504,9 @@
         }
 
         function removeFile() {
-            selectedFile = null;
             document.getElementById('file-input').value = "";
             document.getElementById('file-preview').classList.add('hidden');
         }
-
-        const dropZone = document.getElementById('drop-zone');
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        dropZone.addEventListener('dragover', () => dropZone.classList.add('bg-brand-pastelBlue'), false);
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('bg-brand-pastelBlue'), false);
-        dropZone.addEventListener('drop', (e) => {
-            dropZone.classList.remove('bg-brand-pastelBlue');
-            handleFileSelect(e);
-        }, false);
 
         let canvas, ctx;
         let isDrawing = false;
@@ -538,7 +526,6 @@
             }
             
             resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
 
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mousemove', draw);
@@ -546,16 +533,14 @@
             canvas.addEventListener('mouseleave', stopDrawing);
 
             canvas.addEventListener('touchstart', (e) => {
-                e.preventDefault();
                 const touch = e.touches[0];
                 startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
-            });
+            }, {passive: true});
 
             canvas.addEventListener('touchmove', (e) => {
-                e.preventDefault();
                 const touch = e.touches[0];
                 draw({ clientX: touch.clientX, clientY: touch.clientY });
-            });
+            }, {passive: true});
 
             canvas.addEventListener('touchend', stopDrawing);
         }
@@ -585,35 +570,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             hasSigned = false;
             document.getElementById('canvasPlaceholder').style.display = 'flex';
-        }
-
-        function handleFormSubmit(e) {
-            // Validar que se haya subido un archivo
-            if (!selectedFile) {
-                e.preventDefault();
-                alert("Por favor adjunta la documentación médica de soporte (PDF, JPG o PNG) para continuar.");
-                return;
-            }
-
-            // Validar que se haya dibujado la firma
-            if (!hasSigned) {
-                e.preventDefault();
-                alert("Por favor realiza tu firma digital en el recuadro correspondiente.");
-                return;
-            }
-
-            // Crear o actualizar un campo oculto para enviar la firma en formato DataURL/Base64
-            let firmaInput = document.getElementById('firmaInput');
-            if (!firmaInput) {
-                firmaInput = document.createElement('input');
-                firmaInput.type = 'hidden';
-                firmaInput.id = 'firmaInput';
-                firmaInput.name = 'firma_digital_imagen';
-                document.getElementById('elevatorForm').appendChild(firmaInput);
-            }
-            firmaInput.value = canvas.toDataURL('image/png');
-
-            // El formulario continuará con el envío normal hacia Formspree
+            document.getElementById('firmaInput').value = "";
         }
     </script>
 </body>
