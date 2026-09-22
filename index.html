@@ -120,7 +120,7 @@
                     <p class="text-[11px] text-gray-600 leading-tight">Sube certificado médico o justificación (PDF, JPG, PNG).</p>
                 </div>
 
-                <!-- Step 4 (Corregido el número) -->
+                <!-- Step 4 -->
                 <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center">
                     <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">4</div>
                     <i class="fa-solid fa-calendar-days text-brand-slateMedium text-xl mb-1"></i>
@@ -141,7 +141,8 @@
 
     <!-- Main Form Container -->
     <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
-        <form id="elevatorForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+        <!-- Formulario configurado con Formspree y multipart/form-data -->
+        <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" class="space-y-6">
 
             <!-- Card 1: Datos Personales y Académicos -->
             <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
@@ -164,7 +165,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-regular fa-user"></i>
                             </span>
-                            <input type="text" id="nombre" required placeholder="Ej: María Camila Pérez Gómez"
+                            <input type="text" id="nombre" name="nombre_completo" required placeholder="Ej: María Camila Pérez Gómez"
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
                         </div>
                     </div>
@@ -177,7 +178,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-regular fa-id-card"></i>
                             </span>
-                            <input type="text" id="documento" required placeholder="C.C. / TI / C.E. o ID Estudiantil"
+                            <input type="text" id="documento" name="documento_id" required placeholder="C.C. / TI / C.E. o ID Estudiantil"
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
                         </div>
                     </div>
@@ -190,7 +191,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-regular fa-envelope"></i>
                             </span>
-                            <input type="email" id="correo" required placeholder="usuario@uniminuto.edu.co"
+                            <input type="email" id="correo" name="correo_institucional" required placeholder="usuario@uniminuto.edu.co"
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
                         </div>
                     </div>
@@ -203,7 +204,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-solid fa-phone"></i>
                             </span>
-                            <input type="tel" id="telefono" required placeholder="Ej: 300 123 4567"
+                            <input type="tel" id="telefono" name="telefono_contacto" required placeholder="Ej: 300 123 4567"
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
                         </div>
                     </div>
@@ -216,7 +217,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-solid fa-book"></i>
                             </span>
-                            <input type="text" id="carrera" required placeholder="Ej: Psicología / Ing. de Sistemas"
+                            <input type="text" id="carrera" name="carrera_programa" required placeholder="Ej: Psicología / Ing. de Sistemas"
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
                         </div>
                     </div>
@@ -225,7 +226,7 @@
                         <label for="semestre" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
                             Semestre o Año Académico Actual <span class="text-red-500">*</span>
                         </label>
-                        <select id="semestre" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm bg-white">
+                        <select id="semestre" name="semestre_actual" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm bg-white">
                             <option value="" disabled selected>Selecciona tu semestre actual</option>
                             <option value="1">1° Semestre</option>
                             <option value="2">2° Semestre</option>
@@ -262,19 +263,19 @@
                     </label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Incapacidad temporal" required class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
+                            <input type="radio" name="motivo_principal" value="Incapacidad temporal" required class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             <span class="ml-3 text-xs font-medium text-gray-700">Lesión o Movilidad reducida temporal (Fractura, esguince, cirugía)</span>
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Discapacidad permanente" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
+                            <input type="radio" name="motivo_principal" value="Discapacidad permanente" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             <span class="ml-3 text-xs font-medium text-gray-700">Discapacidad motora permanente</span>
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Condicion medica especial" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
+                            <input type="radio" name="motivo_principal" value="Condicion medica especial" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             <span class="ml-3 text-xs font-medium text-gray-700">Condición médica o de salud que limite subir escaleras</span>
                         </label>
                         <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Gestacion" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
+                            <input type="radio" name="motivo_principal" value="Gestacion" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
                             <span class="ml-3 text-xs font-medium text-gray-700">Estado de gestación / Embarazo de alto riesgo</span>
                         </label>
                     </div>
@@ -284,7 +285,7 @@
                     <label for="descripcion" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
                         Describe brevemente tu situación de salud o movilidad <span class="text-red-500">*</span>
                     </label>
-                    <textarea id="descripcion" rows="3" required placeholder="Por favor detalla tu diagnóstico, tiempo estimado de recuperación o requerimientos específicos..."
+                    <textarea id="descripcion" name="descripcion_situacion" rows="3" required placeholder="Por favor detalla tu diagnóstico, tiempo estimado de recuperación o requerimientos específicos..."
                         class="w-full p-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm"></textarea>
                 </div>
 
@@ -341,7 +342,7 @@
                         <p class="text-sm font-semibold text-brand-slateMedium">Haz clic para explorar o arrastra tus archivos aquí</p>
                         <p class="text-xs text-gray-500 mt-1">Formatos admitidos: PDF, JPG, PNG (Máx. 10MB por archivo)</p>
                         
-                        <input type="file" id="file-input" class="hidden" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
+                        <input type="file" id="file-input" name="soporte_medico" class="hidden" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
                     </div>
 
                     <div id="file-preview" class="hidden bg-gray-50 border border-gray-200 rounded-xl p-3 flex items-center justify-between">
@@ -373,11 +374,11 @@
 
                 <div class="space-y-3 bg-brand-pastelBlue/40 p-4 rounded-xl border border-brand-pastelBlue mb-6 text-xs text-gray-700 leading-relaxed">
                     <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
+                        <input type="checkbox" name="aceptacion_veracidad" value="Aceptado" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
                         <span>Declaro bajo gravedad de juramento que toda la información aquí proporcionada es <strong>veraz, exacta y completa</strong>.</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
+                        <input type="checkbox" name="aceptacion_validacion" value="Aceptado" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
                         <span>Acepto que la institución educativa realice la verificación y validación de la información médica ante las instancias competentes si así lo requiere.</span>
                     </label>
                 </div>
@@ -408,7 +409,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-regular fa-calendar font-bold"></i>
                             </span>
-                            <input type="date" id="fecha" readonly
+                            <input type="date" id="fecha" name="fecha_envio" readonly
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-gray-600 text-sm font-medium">
                         </div>
                         <p class="text-[10px] text-gray-400 mt-1">Registrado automáticamente con la fecha de hoy.</p>
@@ -426,47 +427,6 @@
             </div>
         </form>
     </main>
-
-    <!-- Success Confirmation Modal -->
-    <div id="successModal" class="fixed inset-0 bg-brand-slateDark/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform transition-all text-center relative border border-white">
-            
-            <div class="w-16 h-16 bg-brand-sageBg text-brand-sage rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-
-            <h3 class="text-2xl font-black text-brand-slateDark mb-1">¡Solicitud Registrada!</h3>
-            <p class="text-xs text-brand-sage font-bold tracking-widest uppercase mb-4">Paso a Paso - Ascensor sin Barreras</p>
-            
-            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-                Tu requerimiento ha sido radicado correctamente en el sistema. Nos pondremos en contacto a través de tu correo institucional.
-            </p>
-
-            <div class="bg-brand-pastelBlue rounded-2xl p-4 text-left border border-brand-cardBlue mb-6 space-y-2">
-                <div class="flex justify-between items-center text-xs border-b border-brand-cardBlue pb-2">
-                    <span class="text-gray-500 font-medium">Código de Radicado:</span>
-                    <span id="modal-radicado" class="font-mono font-bold text-brand-slateDark text-sm">#ASC-2026-8942</span>
-                </div>
-                <div class="flex justify-between items-center text-xs border-b border-brand-cardBlue pb-2">
-                    <span class="text-gray-500 font-medium">Estudiante:</span>
-                    <span id="modal-nombre" class="font-semibold text-brand-slateDark">Nombre del Estudiante</span>
-                </div>
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-gray-500 font-medium">Estado:</span>
-                    <span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded text-[10px]">EN REVISIÓN MÉDICA</span>
-                </div>
-            </div>
-
-            <div class="text-left text-xs text-gray-500 mb-6 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                <p class="font-bold text-brand-slateMedium mb-1"><i class="fa-solid fa-circle-info text-brand-sage mr-1"></i> Siguiente Paso:</p>
-                <p>Una vez aprobado el dictamen, se te indicará el módulo o torre donde debes dirigirte para habilitar la tarjeta o lectura de huella.</p>
-            </div>
-
-            <button onclick="closeModal()" class="w-full bg-brand-slateMedium hover:bg-brand-slateDark text-white font-bold py-3 px-6 rounded-xl transition text-sm shadow">
-                Entendido / Finalizar
-            </button>
-        </div>
-    </div>
 
     <!-- Footer Section -->
     <footer class="w-full bg-white border-t border-gray-200 mt-12 py-6 px-4">
@@ -628,34 +588,32 @@
         }
 
         function handleFormSubmit(e) {
-            e.preventDefault();
-
+            // Validar que se haya subido un archivo
             if (!selectedFile) {
+                e.preventDefault();
                 alert("Por favor adjunta la documentación médica de soporte (PDF, JPG o PNG) para continuar.");
                 return;
             }
 
+            // Validar que se haya dibujado la firma
             if (!hasSigned) {
+                e.preventDefault();
                 alert("Por favor realiza tu firma digital en el recuadro correspondiente.");
                 return;
             }
 
-            const nombre = document.getElementById('nombre').value;
-            const randomCode = '#ASC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            // Crear o actualizar un campo oculto para enviar la firma en formato DataURL/Base64
+            let firmaInput = document.getElementById('firmaInput');
+            if (!firmaInput) {
+                firmaInput = document.createElement('input');
+                firmaInput.type = 'hidden';
+                firmaInput.id = 'firmaInput';
+                firmaInput.name = 'firma_digital_imagen';
+                document.getElementById('elevatorForm').appendChild(firmaInput);
+            }
+            firmaInput.value = canvas.toDataURL('image/png');
 
-            document.getElementById('modal-nombre').textContent = nombre;
-            document.getElementById('modal-radicado').textContent = randomCode;
-
-            document.getElementById('successModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.getElementById('elevatorForm').reset();
-            removeFile();
-            clearSignature();
-            toggleAccesoType('temporal');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // El formulario continuará con el envío normal hacia Formspree
         }
     </script>
 </body>
