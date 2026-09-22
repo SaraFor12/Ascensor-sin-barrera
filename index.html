@@ -141,12 +141,12 @@
 
     <!-- Main Form Container -->
     <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
-        <!-- FormSubmit Endpoint configurado para sara.vega@uniminuto.edu.co -->
         <form id="elevatorForm" action="https://formsubmit.co/sara.vega@uniminuto.edu.co" method="POST" enctype="multipart/form-data" class="space-y-6">
 
-            <!-- Configuraciones opcionales para FormSubmit -->
+            <!-- Configuraciones de FormSubmit -->
             <input type="hidden" name="_subject" value="Nueva Solicitud de Acceso a Ascensor">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://sarafor12.github.io/">
 
             <!-- Card 1: Datos Personales y Académicos -->
             <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
@@ -403,7 +403,6 @@
                                 Dibuja tu firma aquí
                             </span>
                         </div>
-                        <!-- Campo oculto para la firma en texto/base64 -->
                         <input type="hidden" id="firmaInput" name="firma_digital_base64">
                     </div>
 
@@ -415,7 +414,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <i class="fa-regular fa-calendar font-bold"></i>
                             </span>
-                            <input type="date" id="fecha" name="fecha_envio" readonly
+                            <input type="text" id="fecha" name="fecha_envio" readonly
                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-gray-600 text-sm font-medium">
                         </div>
                     </div>
@@ -455,8 +454,16 @@
     <!-- Logic & Interaction Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('fecha').value = today;
+            // Ajustar fecha explícita para Bogotá, Colombia (UTC-5)
+            const opcionesFecha = { timeZone: 'America/Bogota', year: 'numeric', month: '2-digit', day: '2-digit' };
+            const partesFecha = new Intl.DateTimeFormat('es-CO', opcionesFecha).formatToParts(new Date());
+            
+            const dia = partesFecha.find(p => p.type === 'day').value;
+            const mes = partesFecha.find(p => p.type === 'month').value;
+            const anio = partesFecha.find(p => p.type === 'year').value;
+            
+            document.getElementById('fecha').value = `${anio}-${mes}-${dia}`;
+            
             initSignatureCanvas();
 
             // Guardar firma automáticamente antes de enviar
