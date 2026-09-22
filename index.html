@@ -1,683 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paso a Paso - Ascensor Sin Barreras | Solicitud de Acceso</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            sage: '#5B8C5A',
-                            sageHover: '#4A7549',
-                            sageLight: '#8FB98E',
-                            sageBg: '#EAF3EC',
-                            pastelBlue: '#E8F1F5',
-                            cardBlue: '#D2E3EB',
-                            slateDark: '#1E2D3D',
-                            slateMedium: '#2C3E50',
-                            accentYellow: '#F3B034'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'Montserrat', 'sans-serif'],
-                        handwriting: ['Caveat', 'cursive'],
-                        heading: ['Montserrat', 'sans-serif']
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso a Paso - Ascensor Sin Barreras | Solicitud de Acceso</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              sage: '#5B8C5A',
+              sageHover: '#4A7549',
+              sageLight: '#8FB98E',
+              sageBg: '#EAF3EC',
+              pastelBlue: '#E8F1F5',
+              cardBlue: '#D2E3EB',
+              slateDark: '#1E2D3D',
+              slateMedium: '#34495E',
+              accentOrange: '#E07A5F'
             }
+          }
         }
-    </script>
-    <style>
-        /* Custom scrollbar and subtle transitions */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #E8F1F5;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #5B8C5A;
-            border-radius: 4px;
-        }
-        .step-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
-        }
-        canvas {
-            touch-action: none;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="bg-brand-pastelBlue font-sans text-brand-slateDark min-h-screen flex flex-col justify-between antialiased">
+<body class="bg-gray-100 font-['Montserrat'] min-h-screen flex flex-col justify-between">
 
-    <!-- Header Section -->
-    <header class="w-full pt-8 pb-4 px-4 bg-gradient-to-b from-white/80 to-transparent">
-        <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
-            
-            <!-- Elevator Top Screen Graphic Accent -->
-            <div class="inline-flex items-center gap-2 bg-brand-slateDark text-brand-accentYellow px-4 py-1 rounded-t-lg shadow-md border-b-2 border-brand-accentYellow text-xs font-mono font-bold tracking-widest mb-3">
-                <i class="fa-solid fa-elevator text-white text-sm"></i> ACCESO UNIVERSITARIO <span class="bg-brand-accentYellow text-brand-slateDark px-1.5 py-0.5 rounded text-[10px]">04</span>
-            </div>
-
-            <!-- Main Title: PASO A PASO -->
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-brand-sage uppercase font-heading drop-shadow-sm flex flex-wrap justify-center items-center gap-2">
-                PASO A PASO
-            </h1>
-
-            <!-- Subtitle Badge: Ascensor sin barreras -->
-            <div class="mt-2 -rotate-1 transform">
-                <span class="bg-brand-slateMedium text-white px-6 py-2 rounded-full font-handwriting text-2xl sm:text-3xl shadow-lg border-2 border-white inline-block">
-                    Ascensor sin barreras
-                </span>
-            </div>
-
-            <p class="mt-4 text-brand-slateMedium font-semibold text-base sm:text-lg max-w-xl text-center px-4">
-                Tu movilidad fácil también hace parte de tu proceso universitario
-            </p>
-        </div>
-    </header>
-
-    <!-- Step-by-Step Info Cards Section (Inspired by Image Reference) -->
-    <section class="max-w-5xl mx-auto px-4 py-6 w-full">
-        <div class="bg-white/70 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-sm border border-white">
-            <h2 class="text-center font-bold text-brand-slateMedium text-sm tracking-wider uppercase mb-5 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-route text-brand-sage"></i> ¿Cómo realizar tu solicitud?
-            </h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
-                <!-- Step 1 -->
-                <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center">
-                    <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">1</div>
-                    <i class="fa-solid fa-user-check text-brand-slateMedium text-xl mb-1"></i>
-                    <h3 class="font-bold text-xs text-brand-slateMedium mb-1">Ingresa y solicita</h3>
-                    <p class="text-[11px] text-gray-600 leading-tight">Accede con tu correo institucional o ID universitario.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center">
-                    <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">2</div>
-                    <i class="fa-solid fa-file-pen text-brand-slateMedium text-xl mb-1"></i>
-                    <h3 class="font-bold text-xs text-brand-slateMedium mb-1">Completa datos</h3>
-                    <p class="text-[11px] text-gray-600 leading-tight">Diligencia tus datos personales, académicos y el motivo.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center">
-                    <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">3</div>
-                    <i class="fa-solid fa-paperclip text-brand-slateMedium text-xl mb-1"></i>
-                    <h3 class="font-bold text-xs text-brand-slateMedium mb-1">Adjunta soportes</h3>
-                    <p class="text-[11px] text-gray-600 leading-tight">Sube certificado médico o justificación (PDF, JPG, PNG).</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center">
-                    <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">2</div>
-                    <i class="fa-solid fa-calendar-days text-brand-slateMedium text-xl mb-1"></i>
-                    <h3 class="font-bold text-xs text-brand-slateMedium mb-1">Define el periodo</h3>
-                    <p class="text-[11px] text-gray-600 leading-tight">Indica por cuánto tiempo necesitas el acceso del ascensor.</p>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="step-card bg-white p-3.5 rounded-xl border border-brand-sageLight/30 flex flex-col items-center text-center sm:col-span-2 md:col-span-1">
-                    <div class="w-8 h-8 rounded-full bg-brand-sage text-white font-bold flex items-center justify-center mb-2 shadow-sm text-sm">5</div>
-                    <i class="fa-solid fa-circle-check text-brand-slateMedium text-xl mb-1"></i>
-                    <h3 class="font-bold text-xs text-brand-slateMedium mb-1">Revisa y envía</h3>
-                    <p class="text-[11px] text-gray-600 leading-tight">Verifica que toda la información sea correcta y envía tu solicitud.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Form Container -->
-    <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
-       <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" class="space-y-6">
-  <input type="hidden" name="fecha_envio" id="fechaEnvio">
-  <input type="hidden" name="firma" id="firmaInput">
-
-            <!-- Card 1: Datos Personales y Académicos -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
-                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-brand-sageBg flex items-center justify-center text-brand-sage font-bold text-lg">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-brand-slateDark">1. Información Personal y Académica</h2>
-                        <p class="text-xs text-gray-500">Ingresa tus datos institucionales actualizados</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- Nombre Completo -->
-                    <div class="col-span-1 md:col-span-2">
-                        <label for="nombre" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Nombre Completo de la Persona <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-regular fa-user"></i>
-                            </span>
-                            <input type="text" id="nombre" required placeholder="Ej: María Camila Pérez Gómez"
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
-                        </div>
-                    </div>
-
-                    <!-- Documento de Identidad -->
-                    <div>
-                        <label for="documento" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            ID / Documento de Identidad <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-regular fa-id-card"></i>
-                            </span>
-                            <input type="text" id="documento" required placeholder="C.C. / TI / C.E. o ID Estudiantil"
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
-                        </div>
-                    </div>
-
-                    <!-- Correo Institucional -->
-                    <div>
-                        <label for="correo" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Correo Institucional <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-regular fa-envelope"></i>
-                            </span>
-                            <input type="email" id="correo" required placeholder="usuario@uniminuto.edu.co"
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
-                        </div>
-                    </div>
-
-                    <!-- Número de Contacto -->
-                    <div>
-                        <label for="telefono" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Número de Contacto / Teléfono <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-solid fa-phone"></i>
-                            </span>
-                            <input type="tel" id="telefono" required placeholder="Ej: 300 123 4567"
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
-                        </div>
-                    </div>
-
-                    <!-- Carrera o Programa Académico -->
-                    <div>
-                        <label for="carrera" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Carrera o Programa Académico <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-solid fa-book"></i>
-                            </span>
-                            <input type="text" id="carrera" required placeholder="Ej: Psicología / Ing. de Sistemas"
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm">
-                        </div>
-                    </div>
-
-                    <!-- Semestre o Año Académico -->
-                    <div class="col-span-1 md:col-span-2">
-                        <label for="semestre" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Semestre o Año Académico Actual <span class="text-red-500">*</span>
-                        </label>
-                        <select id="semestre" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm bg-white">
-                            <option value="" disabled selected>Selecciona tu semestre actual</option>
-                            <option value="1">1° Semestre</option>
-                            <option value="2">2° Semestre</option>
-                            <option value="3">3° Semestre</option>
-                            <option value="4">4° Semestre</option>
-                            <option value="5">5° Semestre</option>
-                            <option value="6">6° Semestre</option>
-                            <option value="7">7° Semestre</option>
-                            <option value="8">8° Semestre</option>
-                            <option value="9">9° Semestre</option>
-                            <option value="10">10° Semestre o superior</option>
-                            <option value="posgrado">Posgrado / Maestría / Especialización</option>
-                            <option value="docente_administrativo">Docente / Administrativo</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: Detalle y Motivo de la Solicitud -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-slateMedium">
-                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-brand-pastelBlue flex items-center justify-center text-brand-slateMedium font-bold text-lg">
-                        <i class="fa-solid fa-wheelchair"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-brand-slateDark">2. Motivo de la Solicitud y Tipo de Acceso</h2>
-                        <p class="text-xs text-gray-500">Especifique las razones y duración del acceso requerido</p>
-                    </div>
-                </div>
-
-                <!-- Motivo de la solicitud (Radio Buttons) -->
-                <div class="mb-6">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-3">
-                        ¿Cuál es el motivo principal de su solicitud? <span class="text-red-500">*</span>
-                    </label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Incapacidad temporal" required class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Lesión o Movilidad reducida temporal (Fractura, esguince, cirugía)</span>
-                        </label>
-                        <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Discapacidad permanente" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Discapacidad motora permanente</span>
-                        </label>
-                        <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Condicion medica especial" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Condición médica o de salud que limite subir escaleras</span>
-                        </label>
-                        <label class="flex items-center p-3 rounded-xl border border-gray-200 hover:border-brand-sage cursor-pointer transition bg-gray-50 hover:bg-white">
-                            <input type="radio" name="motivo" value="Gestacion" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            <span class="ml-3 text-xs font-medium text-gray-700">Estado de gestación / Embarazo de alto riesgo</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Descripción breve -->
-                <div class="mb-6">
-                    <label for="descripcion" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                        Describe brevemente tu situación de salud o movilidad <span class="text-red-500">*</span>
-                    </label>
-                    <textarea id="descripcion" rows="3" required placeholder="Por favor detalla tu diagnóstico, tiempo estimado de recuperación o requerimientos específicos..."
-                        class="w-full p-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:border-brand-sage transition text-sm"></textarea>
-                </div>
-
-                <!-- Tipo de Acceso: Temporal vs Permanente -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-2">
-                        Tipo de acceso requerido <span class="text-red-500">*</span>
-                    </label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <label id="label-temporal" class="relative flex flex-col p-4 rounded-xl border-2 border-brand-sage bg-brand-sageBg/40 cursor-pointer">
-                            <div class="flex items-center justify-between">
-                                <span class="font-bold text-sm text-brand-slateDark flex items-center gap-2">
-                                    <i class="fa-regular fa-clock text-brand-sage"></i> Acceso Temporal
-                                </span>
-                                <input type="radio" name="tipo_acceso" value="Temporal" checked onclick="toggleAccesoType('temporal')" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            </div>
-                            <span class="text-xs text-gray-500 mt-1">Por el periodo que indique la incapacidad médica (Días/Meses)</span>
-                        </label>
-
-                        <label id="label-permanente" class="relative flex flex-col p-4 rounded-xl border-2 border-gray-200 cursor-pointer hover:border-brand-sage">
-                            <div class="flex items-center justify-between">
-                                <span class="font-bold text-sm text-brand-slateDark flex items-center gap-2">
-                                    <i class="fa-solid fa-infinity text-brand-slateMedium"></i> Acceso Permanente
-                                </span>
-                                <input type="radio" name="tipo_acceso" value="Permanente" onclick="toggleAccesoType('permanente')" class="w-4 h-4 text-brand-sage focus:ring-brand-sage">
-                            </div>
-                            <span class="text-xs text-gray-500 mt-1">Válido durante toda tu permanencia académica regular</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Carga de Documentación Médica -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
-                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-brand-sageBg flex items-center justify-center text-brand-sage font-bold text-lg">
-                        <i class="fa-solid fa-file-medical"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-brand-slateDark">3. Soporte y Documentación Médica</h2>
-                        <p class="text-xs text-gray-500">Adjunta certificado o informe firmado por profesional de salud</p>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium">
-                        Adjunte la documentación médica o justificación médica <span class="text-red-500">*</span>
-                    </label>
-
-                    <!-- Drag and Drop Area -->
-                    <div id="drop-zone" onclick="document.getElementById('file-input').click()"
-                        class="border-2 border-dashed border-brand-sageLight rounded-2xl p-6 text-center bg-brand-pastelBlue/50 hover:bg-brand-pastelBlue cursor-pointer transition flex flex-col items-center justify-center">
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-sage mb-3">
-                            <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
-                        </div>
-                        <p class="text-sm font-semibold text-brand-slateMedium">Haz clic para explorar o arrastra tus archivos aquí</p>
-                        <p class="text-xs text-gray-500 mt-1">Formatos admitidos: PDF, JPG, PNG (Máx. 10MB por archivo)</p>
-                        
-                        <input type="file" id="file-input" class="hidden" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
-                    </div>
-
-                    <!-- File Preview Container -->
-                    <div id="file-preview" class="hidden bg-gray-50 border border-gray-200 rounded-xl p-3 flex items-center justify-between">
-                        <div class="flex items-center gap-3 overflow-hidden">
-                            <i id="file-icon" class="fa-solid fa-file-pdf text-red-500 text-2xl"></i>
-                            <div class="truncate">
-                                <p id="file-name" class="text-xs font-bold text-gray-800 truncate">documento.pdf</p>
-                                <p id="file-size" class="text-[10px] text-gray-500">1.2 MB</p>
-                            </div>
-                        </div>
-                        <button type="button" onclick="removeFile()" class="text-gray-400 hover:text-red-500 p-1.5 transition">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4: Declaración, Firma y Fecha -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-slateMedium">
-                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-brand-pastelBlue flex items-center justify-center text-brand-slateMedium font-bold text-lg">
-                        <i class="fa-solid fa-signature"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-brand-slateDark">4. Declaración y Firma Digital</h2>
-                        <p class="text-xs text-gray-500">Aceptación de términos y validación legal de la información</p>
-                    </div>
-                </div>
-
-                <!-- Terms and Declarations -->
-                <div class="space-y-3 bg-brand-pastelBlue/40 p-4 rounded-xl border border-brand-pastelBlue mb-6 text-xs text-gray-700 leading-relaxed">
-                    <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
-                        <span>Declaro bajo gravedad de juramento que toda la información aquí proporcionada es **veraz, exacta y completa**.</span>
-                    </label>
-                    <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" required class="mt-0.5 rounded text-brand-sage focus:ring-brand-sage w-4 h-4">
-                        <span>Acepto que la institución educativa realice la verificación y validación de la información médica ante las instancias competentes si así lo requiere.</span>
-                    </label>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Signature Pad Canvas -->
-                    <div class="md:col-span-2">
-                        <div class="flex items-center justify-between mb-1.5">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium">
-                                Firma del Estudiante / Solicitante <span class="text-red-500">*</span>
-                            </label>
-                            <button type="button" onclick="clearSignature()" class="text-[11px] text-brand-sage hover:underline flex items-center gap-1 font-semibold">
-                                <i class="fa-solid fa-eraser"></i> Limpiar firma
-                            </button>
-                        </div>
-                        <div class="border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 overflow-hidden relative">
-                            <canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair block"></canvas>
-                            <span id="canvasPlaceholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-gray-400 text-xs italic">
-                                Dibuja tu firma con el ratón o el dedo aquí
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Fecha de Solicitud -->
-                    <div>
-                        <label for="fecha" class="block text-xs font-bold uppercase tracking-wider text-brand-slateMedium mb-1.5">
-                            Fecha de Solicitud
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-regular fa-calendar font-bold"></i>
-                            </span>
-                            <input type="date" id="fecha" readonly
-                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-gray-600 text-sm font-medium">
-                        </div>
-                        <p class="text-[10px] text-gray-400 mt-1">Registrado automáticamente con la fecha de hoy.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="pt-2">
-                <button type="submit"
-                    class="w-full bg-brand-sage hover:bg-brand-sageHover text-white text-base font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition transform active:scale-[0.99] flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    ENVIAR SOLICITUD DE ACCESO
-                </button>
-            </div>
-        </form>
-    </main>
-
-    <!-- Success Confirmation Modal -->
-    <div id="successModal" class="fixed inset-0 bg-brand-slateDark/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform transition-all text-center relative border border-white">
-            
-            <div class="w-16 h-16 bg-brand-sageBg text-brand-sage rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-
-            <h3 class="text-2xl font-black text-brand-slateDark mb-1">¡Solicitud Registrada!</h3>
-            <p class="text-xs text-brand-sage font-bold tracking-widest uppercase mb-4">Paso a Paso - Ascensor sin Barreras</p>
-            
-            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-                Tu requerimiento ha sido radicado correctamente en el sistema. Nos pondremos en contacto a través de tu correo institucional.
-            </p>
-
-            <div class="bg-brand-pastelBlue rounded-2xl p-4 text-left border border-brand-cardBlue mb-6 space-y-2">
-                <div class="flex justify-between items-center text-xs border-b border-brand-cardBlue pb-2">
-                    <span class="text-gray-500 font-medium">Código de Radicado:</span>
-                    <span id="modal-radicado" class="font-mono font-bold text-brand-slateDark text-sm">#ASC-2026-8942</span>
-                </div>
-                <div class="flex justify-between items-center text-xs border-b border-brand-cardBlue pb-2">
-                    <span class="text-gray-500 font-medium">Estudiante:</span>
-                    <span id="modal-nombre" class="font-semibold text-brand-slateDark">Nombre del Estudiante</span>
-                </div>
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-gray-500 font-medium">Estado:</span>
-                    <span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded text-[10px]">EN REVISIÓN MÉDICA</span>
-                </div>
-            </div>
-
-            <!-- Bottom information box matching standard university processes -->
-            <div class="text-left text-xs text-gray-500 mb-6 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                <p class="font-bold text-brand-slateMedium mb-1"><i class="fa-solid fa-circle-info text-brand-sage mr-1"></i> Siguiente Paso:</p>
-                <p>Una vez aprobado el dictamen, se te indicará el módulo o torre donde debes dirigirte para habilitar la tarjeta o lectura de huella.</p>
-            </div>
-
-            <button onclick="closeModal()" class="w-full bg-brand-slateMedium hover:bg-brand-slateDark text-white font-bold py-3 px-6 rounded-xl transition text-sm shadow">
-                Entendido / Finalizar
-            </button>
-        </div>
+  <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+    <!-- Encabezado -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-brand-slateDark mb-2">Ascensor sin barrera</h1>
+      <p class="text-gray-600 font-medium">Solicitud de Acceso y Registro de Usuario</p>
     </div>
 
-    <!-- Footer Section -->
-    <footer class="w-full bg-white border-t border-gray-200 mt-12 py-6 px-4">
-        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div class="flex items-center gap-3">
-                <!-- University Branding Logo Concept -->
-                <div class="w-9 h-9 bg-brand-slateMedium rounded-lg flex items-center justify-center text-brand-accentYellow font-black text-xl shadow">
-                    MD
-                </div>
-                <div>
-                    <p class="font-extrabold text-sm text-brand-slateDark tracking-tight leading-none">UNIMINUTO</p>
-                    <p class="text-[10px] text-gray-500 font-medium">Corporación Universitaria Minuto de Dios</p>
-                    <p class="text-[9px] text-brand-sage font-bold">Educación de calidad al alcance de todos</p>
-                </div>
-            </div>
+    <!-- Contenedor del Formulario -->
+    <div class="bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
+      <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" class="space-y-6">
+        
+        <!-- Campos Ocultos para Fecha y Firma -->
+        <input type="hidden" name="fecha_envio" id="fechaEnvio">
+        <input type="hidden" name="firma" id="firmaInput">
 
-            <div class="text-xs text-gray-400">
-                <p>© 2026 Bienestar Universitario - Programa de Inclusión y Accesibilidad</p>
-            </div>
+        <!-- Datos Personales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre Completo *</label>
+            <input type="text" name="nombre_completo" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Correo Electrónico *</label>
+            <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:outline-none transition">
+          </div>
         </div>
-    </footer>
 
-    <!-- Logic & Interaction Scripts -->
-    <script>
-        // Set Today's Date into form date input automatically
-        document.addEventListener("DOMContentLoaded", () => {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('fecha').value = today;
-            initSignatureCanvas();
-        });
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Teléfono / Celular</label>
+            <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Dependencia / Ubicación</label>
+            <input type="text" name="ubicacion" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:outline-none transition">
+          </div>
+        </div>
 
-        // Toggle Visual selection for Access Type
-        function toggleAccesoType(type) {
-            const tempLabel = document.getElementById('label-temporal');
-            const permLabel = document.getElementById('label-permanente');
+        <!-- Archivo Adjunto -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Adjuntar Archivo o Documento</label>
+          <input type="file" name="archivo_adjunto" class="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-sageBg file:text-brand-sageHover hover:file:bg-brand-sageLight/20 cursor-pointer">
+        </div>
 
-            if(type === 'temporal') {
-                tempLabel.className = "relative flex flex-col p-4 rounded-xl border-2 border-brand-sage bg-brand-sageBg/40 cursor-pointer";
-                permLabel.className = "relative flex flex-col p-4 rounded-xl border-2 border-gray-200 cursor-pointer hover:border-brand-sage";
-            } else {
-                permLabel.className = "relative flex flex-col p-4 rounded-xl border-2 border-brand-sage bg-brand-sageBg/40 cursor-pointer";
-                tempLabel.className = "relative flex flex-col p-4 rounded-xl border-2 border-gray-200 cursor-pointer hover:border-brand-sage";
-            }
-        }
+        <!-- Observaciones -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Observaciones o Motivo de la Solicitud</label>
+          <textarea name="observaciones" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-sage focus:outline-none transition"></textarea>
+        </div>
 
-        // File Selection & Drag Drop Management
-        let selectedFile = null;
+        <!-- Firma Canvas -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Firma Digital *</label>
+          <div class="border border-gray-300 rounded-lg p-2 bg-gray-50 flex flex-col items-center">
+            <canvas id="signaturePad" width="350" height="150" class="border border-dashed border-gray-400 bg-white rounded cursor-crosshair touch-none"></canvas>
+            <button type="button" id="clearSignature" class="mt-2 text-xs text-red-600 underline font-semibold">Limpiar firma</button>
+          </div>
+        </div>
 
-        function handleFileSelect(e) {
-            const files = e.target.files || e.dataTransfer.files;
-            if (files.length > 0) {
-                selectedFile = files[0];
-                renderFilePreview(selectedFile);
-            }
-        }
+        <!-- Botón de Envío -->
+        <div class="text-center pt-4">
+          <button type="submit" class="w-full md:w-auto px-8 py-3.5 bg-brand-sage text-white font-bold rounded-lg hover:bg-brand-sageHover transition shadow-lg">
+            Enviar Solicitud
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-        function renderFilePreview(file) {
-            const preview = document.getElementById('file-preview');
-            const nameEl = document.getElementById('file-name');
-            const sizeEl = document.getElementById('file-size');
-            const iconEl = document.getElementById('file-icon');
+  <!-- Script para la Firma y Envío -->
+  <script>
+    // Configuración del Canvas para la Firma
+    const canvas = document.getElementById('signaturePad');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
 
-            nameEl.textContent = file.name;
-            sizeEl.textContent = (file.size / (1024 * 1024)).toFixed(2) + " MB";
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
 
-            if (file.name.endsWith('.pdf')) {
-                iconEl.className = "fa-solid fa-file-pdf text-red-500 text-2xl";
-            } else {
-                iconEl.className = "fa-solid fa-file-image text-brand-sage text-2xl";
-            }
+    function startDrawing(e) {
+      isDrawing = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
 
-            preview.classList.remove('hidden');
-        }
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getPos(e);
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#000000';
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
 
-        function removeFile() {
-            selectedFile = null;
-            document.getElementById('file-input').value = "";
-            document.getElementById('file-preview').classList.add('hidden');
-        }
+    function stopDrawing() {
+      isDrawing = false;
+    }
 
-        // Setup Drag and Drop events
-        const dropZone = document.getElementById('drop-zone');
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, preventDefaults, false);
-        });
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
 
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
+    canvas.addEventListener('touchstart', startDrawing, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDrawing);
 
-        dropZone.addEventListener('dragover', () => dropZone.classList.add('bg-brand-pastelBlue'), false);
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('bg-brand-pastelBlue'), false);
-        dropZone.addEventListener('drop', (e) => {
-            dropZone.classList.remove('bg-brand-pastelBlue');
-            handleFileSelect(e);
-        }, false);
+    document.getElementById('clearSignature').addEventListener('click', function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
 
-        // Interactive Canvas Signature Pad
-        let canvas, ctx;
-        let isDrawing = false;
-        let hasSigned = false;
-
-        function initSignatureCanvas() {
-            canvas = document.getElementById('signatureCanvas');
-            ctx = canvas.getContext('2d');
-
-            // Responsive canvas resolution resize
-            function resizeCanvas() {
-                const rect = canvas.getBoundingClientRect();
-                canvas.width = rect.width;
-                canvas.height = rect.height;
-                ctx.strokeStyle = "#1E2D3D";
-                ctx.lineWidth = 2.5;
-                ctx.lineCap = "round";
-            }
-            
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            // Mouse Events
-            canvas.addEventListener('mousedown', startDrawing);
-            canvas.addEventListener('mousemove', draw);
-            canvas.addEventListener('mouseup', stopDrawing);
-            canvas.addEventListener('mouseleave', stopDrawing);
-
-            // Touch Events for Mobile / Tablet
-            canvas.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                const touch = e.touches[0];
-                const rect = canvas.getBoundingClientRect();
-                startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
-            });
-
-            canvas.addEventListener('touchmove', (e) => {
-                e.preventDefault();
-                const touch = e.touches[0];
-                draw({ clientX: touch.clientX, clientY: touch.clientY });
-            });
-
-            canvas.addEventListener('touchend', stopDrawing);
-        }
-
-        function startDrawing(e) {
-            isDrawing = true;
-            hasSigned = true;
-            document.getElementById('canvasPlaceholder').style.display = 'none';
-            const rect = canvas.getBoundingClientRect();
-            ctx.beginPath();
-            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            const rect = canvas.getBoundingClientRect();
-            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-        }
-
-        function clearSignature() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            hasSigned = false;
-            document.getElementById('canvasPlaceholder').style.display = 'flex';
-        }
-
-        // Handle Form Submission and Validations
-        // Handle Form Submission and Validations
-document.getElementById('elevatorForm').addEventListener('submit', function(e) {
-  // 1. Asignar la fecha actual automáticamente
-  const fechaInput = document.getElementById('fechaEnvio') || document.querySelector('input[name="fecha_envio"]');
-  if (fechaInput) {
-    const ahora = new Date();
-    fechaInput.value = ahora.toLocaleString('es-CO');
-  }
-
-  // 2. Convertir el lienzo de la firma a texto de imagen para enviarlo
-  const canvas = document.getElementById('signaturePad') || document.querySelector('canvas');
-  const firmaInput = document.getElementById('firmaInput') || document.querySelector('input[name="firma"]');
-  
-  if (canvas && firmaInput) {
-    firmaInput.value = canvas.toDataURL('image/png');
-  }
-});
-            // Validate File Attachment
-            if (!selectedFile) {
-                alert("Por favor adjunta la documentación médica de soporte (PDF, JPG o PNG) para continuar.");
-                return;
-            }
+    // Capturar fecha y convertir firma antes de enviar a Formspree
+    document.getElementById('elevatorForm').addEventListener('submit', function(e) {
+      const ahora = new Date();
+      document.getElementById('fechaEnvio').value = ahora.toLocaleString('es-CO');
+      document.getElementById('firmaInput').value = canvas.toDataURL('image/png');
+    });
+  </script>
+</body>
+</html>
