@@ -145,7 +145,9 @@
 
     <!-- Main Form Container -->
     <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
-        <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" class="space-y-6">
+       <form id="elevatorForm" action="https://formspree.io/f/xyezwjbw" method="POST" enctype="multipart/form-data" class="space-y-6">
+  <input type="hidden" name="fecha_envio" id="fechaEnvio">
+  <input type="hidden" name="firma" id="firmaInput">
 
             <!-- Card 1: Datos Personales y Académicos -->
             <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-l-4 border-brand-sage">
@@ -657,9 +659,23 @@
         }
 
         // Handle Form Submission and Validations
-        function handleFormSubmit(e) {
-            e.preventDefault();
+        // Handle Form Submission and Validations
+document.getElementById('elevatorForm').addEventListener('submit', function(e) {
+  // 1. Asignar la fecha actual automáticamente
+  const fechaInput = document.getElementById('fechaEnvio') || document.querySelector('input[name="fecha_envio"]');
+  if (fechaInput) {
+    const ahora = new Date();
+    fechaInput.value = ahora.toLocaleString('es-CO');
+  }
 
+  // 2. Convertir el lienzo de la firma a texto de imagen para enviarlo
+  const canvas = document.getElementById('signaturePad') || document.querySelector('canvas');
+  const firmaInput = document.getElementById('firmaInput') || document.querySelector('input[name="firma"]');
+  
+  if (canvas && firmaInput) {
+    firmaInput.value = canvas.toDataURL('image/png');
+  }
+});
             // Validate File Attachment
             if (!selectedFile) {
                 alert("Por favor adjunta la documentación médica de soporte (PDF, JPG o PNG) para continuar.");
